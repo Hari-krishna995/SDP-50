@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+    <style>
+        /* Page styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Signin form container */
+        .signin {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        /* Signin form content */
+        .content {
+            max-width: 400px;
+            margin: auto;
+        }
+
+        /* Form title */
+        .content h2 {
+            text-align: center;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: slideInDown 1.5s ease-in-out;
+        }
+
+        /* Form input styles */
+        .form .inputBox {
+            position: relative;
+            margin-bottom: 20px;
+            animation: slideInLeft 1.5s ease-in-out;
+        }
+
+        /* Input styles */
+        .form .inputBox input {
+            width: 100%;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #333;
+            border: none;
+            border-bottom: 2px solid #333;
+            outline: none;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        /* Input label styles */
+        .form .inputBox i {
+            position: absolute;
+            left: 0;
+            padding: 10px 0;
+            font-size: 16px;
+            color: #333;
+            pointer-events: none;
+            transition: 0.5s;
+        }
+
+        /* Input focus styles */
+        .form .inputBox input:focus + i,
+        .form .inputBox input:valid + i {
+            transform: translateY(-18px);
+            font-size: 12px;
+            color: #ff7b00;
+        }
+
+        .form .inputBox input:focus,
+        .form .inputBox input:valid {
+            border-bottom: 2px solid #ff7b00;
+        }
+
+        /* Submit button styles */
+        .form .inputBox input[type="submit"] {
+            width: 100%;
+            background: #ff7b00;
+            border: none;
+            outline: none;
+            color: #fff;
+            padding: 10px 20px;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 18px;
+            animation: slideInUp 1.5s ease-in-out;
+        }
+
+        /* Submit button hover effect */
+        .form .inputBox input[type="submit"]:hover {
+            background: #333;
+        }
+
+        /* Sign-up link */
+        .signup-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Keyframes animations */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInDown {
+            0% {
+                transform: translateY(-50%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            0% {
+                transform: translateX(-50%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInUp {
+            0% {
+                transform: translateY(50%);
+                opacity: 0;
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="signin">
+        <div class="content">
+            <h2>Sign In</h2>
+            <div class="form">
+                <form method="post" action="{% url 'login1' %}">
+                    {% csrf_token %}
+                    <div class="inputBox">
+                        <input type="text" name="username" required> <i>Username</i>
+                    </div>
+                    <div class="inputBox">
+                        <input type="password" name="password" required> <i>Password</i>
+                    </div>
+                    <div class="inputBox">
+                        <input name="SUBMIT" type="submit" value="Login">
+                    </div>
+                </form>
+            </div>
+            <div class="signup-link">
+                Don't have an account? <a href="{% url 'signup' %}">Sign up</a>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
